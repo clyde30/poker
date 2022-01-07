@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  background-color: #145912;
+}
+
+.title {
+  color: #ffffff;
+}
+
+.card-list {
+  margin: auto;
+}
+
+.card-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-list li {
+  width: 200px;
+  margin: 0 5px;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+}
+
+.card-list li:hover {
+  width: 220px;
+}
