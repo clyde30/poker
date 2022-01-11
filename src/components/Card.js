@@ -1,9 +1,9 @@
 
 export default function Card({card}) {
     return (
-        <div className="card">
-            <div>{`${card.value} of ${card.suit}`}</div>
+        <li className="card">
+            <h3>{`${card.value} of ${card.suit}`}</h3>
             <img src={`images/svg_playing_cards/fronts/png_96_dpi/${card.suit}_${card.value}.png`} alt="card" />
-            </div>
+        </li>
     );
 }

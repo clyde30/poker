@@ -15,26 +15,21 @@ body {
   color: #ffffff;
 }
 
-.card-list {
+.hand {
   margin: auto;
 }
 
-.card-list ul {
+.hand ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.card-list li {
+.hand li {
   width: 200px;
   margin: 0 5px;
 }
 
-.card {
-  width: 100%;
-  height: auto;
-}
-
-.card-list li:hover {
+.hand li:hover {
   width: 220px;
 }
