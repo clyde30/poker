@@ -3,8 +3,8 @@
   
   export function BuildDeck() {
     const suits = ['hearts', 'diamonds', 'spades', 'clubs'];
-    const names = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
-    const values = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    const names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace'];
+    const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     const deck = [];
 
     for (let suitIdx = 0; suitIdx < suits.length; suitIdx++) {
