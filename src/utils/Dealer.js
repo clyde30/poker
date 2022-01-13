@@ -1,3 +1,6 @@
+  import { SortCards } from "./SortCards";
+  import { RankHand } from "./RankHand";
+  
   export function BuildDeck() {
     const suits = ['hearts', 'diamonds', 'spades', 'clubs'];
     const names = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
@@ -18,13 +21,16 @@
 }
 
 export function Deal(numCards, deck) {
-  const hand = [];
+  let hand = [];
   for (let i = 0; i < numCards; i++) {
     hand.push(deck.shift());
   }
+  hand = SortCards(hand);
+  hand.rank = RankHand(hand);
+  hand.name = GetHandName(hand.rank);
+
   return hand;
 }
-
 
 function ShuffleDeck(deck) {
   let shuffledDeck = [];
@@ -34,4 +40,37 @@ function ShuffleDeck(deck) {
     deck.splice(randomIdx, 1);
   }
   return shuffledDeck;
+}
+
+function GetHandName(rank) {
+  let name = '';
+  switch (rank) {
+    case 1:
+      name = 'pair';
+      break;
+    case 2:
+      name = 'two pair';
+      break;
+    case 3:
+      name = 'three of a kind';
+      break;
+    case 4:
+      name = 'straight';
+      break;
+    case 5:
+      name = 'flush';
+      break;
+    case 6:
+      name = 'full house';
+      break;
+    case 7:
+      name = 'four of a kind';
+      break;
+    case 8:
+      name = 'straight flush';
+      break;
+    default:
+      name = 'high card';
+  }
+  return name;
 }

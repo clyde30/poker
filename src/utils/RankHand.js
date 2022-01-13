@@ -3,46 +3,83 @@ import { SortCards } from "./SortCards";
 export function RankHand(hand) {
     // hand must be sorted by value
     hand = SortCards(hand);
-    let rank = 0;
+
+    let rank = {
+        value: 0,
+        highCard: hand[4].value,
+        name: `${hand[4].name} high`
+    }
 
     //check straight flush
     if (IsFlush(hand) && IsStraight(hand)) {
-        rank = 8;
+        rank.value = 8;
+        rank.name = 'straight flush';
+        rank.highCard = hand[4];
+        return rank;
     }
 
     //check flush
     if (IsFlush(hand) && !IsStraight(hand)) {
-        rank = 5;
+        rank.value = 5;
+        rank.name = 'flush';
+        rank.highCard = hand[4];
+        return rank;
     }
 
     //check straight
     if (!IsFlush(hand) && IsStraight(hand)) {
-        rank = 4;
+        rank.value = 4;
+        rank.name = 'straight';
+        rank.highCard = hand[4];
+        return rank;
     }
 
     //check four of a kind
     if (IsFourOfAKind(hand)) {
-        rank = 7;
+        rank.value = 7;
+        rank.name = 'four of a kind';
+        rank.highCard = hand[3];
+        return rank;
     }
 
     //check full house
     if (IsPair(hand) && IsThreeOfAKind(hand)) {
-            rank = 6;
+        rank.value = 6;
+        rank.name = 'full house';
+        rank.highCard = hand[2];
+        return rank;
     }
 
     //check three of a kind
     if (IsThreeOfAKind(hand)) {
-        rank = 3;
+        rank.value = 3;
+        rank.name = 'three of a kind';
+        rank.highCard = hand[2];
+        return rank;
     }
 
     //check two pair
     if (IsTwoPair(hand)) {
-        rank = 2;
+        rank.value = 2;
+        rank.name = 'two pair';
+
+        //find the highest pair
+        //I'm not sure this is correct
+        if (hand[4].value === hand[3].value) {
+            rank.highCard = hand[4];
+        } else
+            rank.highCard = hand[3];
+        return rank;
     }
 
     //check pair
     if (IsPair(hand)) {
-        rank = 1;
+        rank.value = 1;
+        //this is not correct
+        rank.highCard = hand[2];
+        rank.name = `pair of ${hand[2].name}s`;
+
+        return rank;
     }
 
     return rank;
